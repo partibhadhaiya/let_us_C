@@ -1,0 +1,155 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX_CONTACTS 100
+#define MAX_NAME 50
+#define MAX_PHONE 15
+#define MAX_EMAIL 50
+
+typedef struct {
+    char name[MAX_NAME];
+    char phone[MAX_PHONE];
+    char email[MAX_EMAIL];
+} Contact;
+
+Contact contacts[MAX_CONTACTS];
+int contactCount = 0;
+
+void loadContacts() {
+    FILE *file = fopen("contacts.txt", "r");
+    if (file == NULL) return;
+    while (fscanf(file, "%[^,],%[^,],%[^\n]\n", contacts[contactCount].name, contacts[contactCount].phone, contacts[contactCount].email) == 3) {
+	contactCount++;
+	if (contactCount >= MAX_CONTACTS) break;
+    }
+    fclose(file);
+}
+
+void saveContacts() {
+int i;
+    FILE *file = fopen("contacts.txt", "w");
+    if (file == NULL) {
+	printf("Error saving contacts.\n");
+	return;
+    }
+    for ( i = 0; i < contactCount; i++) {
+	fprintf(file, "%s,%s,%s\n", contacts[i].name, contacts[i].phone, contacts[i].email);
+    }
+    fclose(file);
+}
+
+void addContact() {
+    if (contactCount >= MAX_CONTACTS) {
+	printf("Contact list is full.\n");
+	return;
+    }
+    printf("Enter name: ");
+    scanf(" %[^\n]", contacts[contactCount].name);
+    printf("Enter phone: ");
+    scanf(" %[^\n]", contacts[contactCount].phone);
+    printf("Enter email: ");
+    scanf(" %[^\n]", contacts[contactCount].email);
+    contactCount++;
+    saveContacts();
+    printf("Contact added successfully.\n");
+}
+
+void viewContacts() {
+int i;
+    if (contactCount == 0) {
+	printf("No contacts found.\n");
+	return;
+    }
+    printf("Contacts:\n");
+    for ( i = 0; i < contactCount; i++) {
+	printf("%d. Name: %s, Phone: %s, Email: %s\n", i+1, contacts[i].name, contacts[i].phone, contacts[i].email);
+    }
+}
+
+void searchContact() {
+int found = 0;
+int i;
+    char searchName[MAX_NAME];
+    printf("Enter name to search: ");
+    scanf(" %[^\n]", searchName);
+
+    for ( i = 0; i < contactCount; i++) {
+	if (strstr(contacts[i].name, searchName) != NULL) {
+	    printf("Found: Name: %s, Phone: %s, Email: %s\n", contacts[i].name, contacts[i].phone, contacts[i].email);
+	    found = 1;
+	}
+    }
+    if (!found) {
+	printf("No contact found with that name.\n");
+    }
+}
+
+void editContact() {
+int i;
+    char editName[MAX_NAME];
+    printf("Enter name of contact to edit: ");
+    scanf(" %[^\n]", editName);
+    for ( i = 0; i < contactCount; i++) {
+	if (strcmp(contacts[i].name, editName) == 0) {
+	    printf("Editing contact: %s\n", contacts[i].name);
+	    printf("Enter new name: ");
+	    scanf(" %[^\n]", contacts[i].name);
+	    printf("Enter new phone: ");
+	    scanf(" %[^\n]", contacts[i].phone);
+	    printf("Enter new email: ");
+	    scanf(" %[^\n]", contacts[i].email);
+	    saveContacts();
+	    printf("Contact updated successfully.\n");
+	    return;
+	}
+    }
+    printf("Contact not found.\n");
+}
+
+void deleteContact() {
+int i;
+int j;
+    char deleteName[MAX_NAME];
+    printf("Enter name of contact to delete: ");
+    scanf(" %[^\n]", deleteName);
+    for ( i = 0; i < contactCount; i++) {
+	if (strcmp(contacts[i].name, deleteName) == 0) {
+	    for ( j = i; j < contactCount - 1; j++) {
+		contacts[j] = contacts[j + 1];
+	    }
+	    contactCount--;
+	    saveContacts();
+	    printf("Contact deleted successfully.\n");
+	    return;
+	}
+    }
+    printf("Contact not found.\n");
+}
+
+int main() {
+int choice;
+clrscr();
+    loadContacts();
+    while (1) {
+	printf("\nContact Management System\n");
+	printf("1. Add Contact\n");
+	printf("2. View Contacts\n");
+	printf("3. Search Contact\n");
+	printf("4. Edit Contact\n");
+	printf("5. Delete Contact\n");
+	printf("6. Exit\n");
+	printf("Enter your choice: ");
+	scanf("%d", &choice);
+	switch (choice) {
+	    case 1: addContact(); break;
+	    case 2: viewContacts(); break;
+	    case 3: searchContact(); break;
+	    case 4: editContact(); break;
+	    case 5: deleteContact(); break;
+	    case 6: exit(0);
+	    default: printf("Invalid choice. Try again.\n");
+	}
+    }
+    return 0;
+}

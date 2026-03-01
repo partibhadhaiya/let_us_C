@@ -1,0 +1,153 @@
+
+
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+#include<math.h>
+void main(){
+/*triangle *//*
+int a,b,c;
+printf("Enter the length of side\n");
+scanf("\n%d%d%d",&a,&b,&c);
+if(a==b||b==c||c==a){
+printf("\n the triangle is isoscles");
+}
+else if (a==b==c){
+printf("\n The triangle is equilateral");
+}
+else{
+printf("triangle is scalene in nature");
+} */
+/*cmyk*/
+/*
+float r,g,b,w,a;
+float c,m,y,k;
+printf("Enter the value of rgb\n");
+scanf("%f%f%f",&r,&g,&b);
+a=max(r/255,g/255);
+b=max(g/255,b/255);
+w=max(a,b);
+printf("the white is %f",w);
+
+c=(w-(r/255))/w;
+printf("The cyan color is :%f",c);
+
+m=(w-(g/255))/w;
+printf("The magenta is :%f",m);
+
+k=1-w;
+printf("\nThe black is :%f",k);
+*/
+/*quality of stainless steel
+
+*//*
+int hardness,tensileStrength;
+float carbonContent;
+printf("\nEnter Hardness,CarbonContent,tensileStrength respectively");
+scanf("%d%f%d",&hardness,&carbonContent,&tensileStrength);
+if(hardness>750&&carbonContent<0.7&&tensileStrength>5600){
+printf("\nGrade 10");
+}
+else if(hardness>750&&carbonContent<0.7){
+printf("\nGrade 9");
+}
+else if(hardness>750&&tensileStrength>5600){
+printf("\nGrade 7");
+}
+else if (carbonContent<0.7 &&tensileStrength>5600){
+printf("\nGrade 8");
+}
+else if (carbonContent<0.7||tensileStrength>5600||hardness>750){
+printf("\nGrade 6");
+}
+else {
+printf("\nGrade 5");
+}
+
+
+*/   /*
+/*BMI*/
+  /*
+int height,weight;
+float BMI;
+clrscr();
+
+printf("Enter height (meter) and weight(kg) resp.");
+scanf("%d%d",&height,&weight);
+BMI=weight/(height*height);
+if(BMI<15){
+printf("\nStarvation");
+}
+else if(BMI>=15&& BMI<17.5){
+printf("\nAnorexic");
+}
+else if (BMI>=17.6 && BMI<18.5){
+printf("\nUnderweight");
+}
+else if (BMI>=18.6 &&BMI<24.9){
+printf("\nideal");
+}
+else if(BMI>=25&& BMI<25.9){
+printf("\nOverweight");
+}
+else if (BMI>30 &&BMI<30.9){
+printf("\nObese");
+}
+else if(BMI>=40){
+printf("Morbidly obese");
+}
+else{
+printf("invalid") ;
+}
+
+
+*/
+/*TERNARY OPERATOR*/
+char ch,result;
+printf("Enter a alphabet\n");
+scanf("\n%c",&ch);
+result=(ch>=92&&ch<=122? printf("small"):printf("capital"));
+printf("\n%ch",result);
+
+/*leap year or not*/
+
+/*int year;
+char ans;
+printf("Enter a year ");
+scanf("%d",&year);
+ans=(year%400==0||year%100!=0&&year%4==0?printf("leap"):printf("not leap year"));
+printf("%c",ans);
+*/
+
+
+/*trignometric function*/
+/*
+double x,sum,a,b;
+clrscr();
+printf("Enter the value of angle in(degree)");
+scanf("%f",&x);
+a=sin(x);
+b=cos(x);
+sum=(a*a)+(b*b);
+printf("sum is %lf",sum);
+ */
+ /*greatest from three no*/
+/* int a,b,c;
+ char result;
+ printf("Enter three no");
+ scanf("%d%d%d",&a,&b,&c);
+ result=(a>b?(a>c?printf("a is greates"):printf("c is greates")):(b>c?printf("b is greates"):printf("c is greatest")));
+ printf("%c",result);
+ */
+ /*salwise job*/
+/* int sal;
+ char profession;
+ clrscr();
+ printf("Enter your salary:");
+ scanf("%d",&sal);
+ profession=(sal>=15000?(sal>=25000&&sal<=40000?printf("\nMAnager"):printf("\nAccountant")):printf("\nClerk"));
+ printf("%c",profession);
+ */
+getch();
+
+}
