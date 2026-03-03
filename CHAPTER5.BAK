@@ -53,7 +53,7 @@ printf("The %d to the power %d is %d",b,a,mul);
 */
 /*
 armstrong 1-500*/
-/*int j=1,temp,sum,d;
+int j=1,temp,sum,d;
 while(j<=500)
 {
   sum=0;
@@ -70,7 +70,7 @@ while(j<=500)
   }
   j++;
 
-} */
+}
 /*wap to find the octal equivalent*/
 /*int num,d,rev=0,temp;
 printf("please enter your no.\n");
@@ -114,7 +114,7 @@ scanf("%d",&ans);
 printf("\nthe total no of positive no are %d",pos);
 printf("\nthe total no of negative no are %d",neg);
 printf("\n the total no of zeros are %d",zero);
-*/
+*//*
 int x,y,z,ans,smallest,greatest,range;
 clrscr();
 printf("Enter value of x and y\n");
@@ -160,6 +160,15 @@ printf("are you want to continue.0 for continue.1 for exit\t");
 scanf("%d",&ans);}
 range=greatest-smallest;
 printf("\nThe range is :%d",range);
-
+*/
+/*program for ascii values*//*
+char ascii;
+int i;
+printf("ascii value:ascii number");
+i=0;
+while(i<=255){
+printf("%c:%d\t",i,i);
+i++ ;
+} */
 getch();
 }
